@@ -6,8 +6,8 @@ const connect = function() {
     host: "192.168.1.72",
     port: "50541",
   });
-  
-  
+
+
   conn.setEncoding("utf8");
 
   // Event Handler 1
@@ -15,21 +15,31 @@ const connect = function() {
     console.log("Server says:", data);
   });
 
-// Event Handler 2
+  // Event Handler 2
 
-conn.on("connect", () => {
-  console.log("Successfully connected to game server");
-});
+  conn.on("connect", () => {
+    console.log("Successfully connected to game server");
+    });
 
-conn.on("connect", () => {
-  conn.write("Name: KBL");
-});
+    conn.on("connect", () => {
+      conn.write("Name: KBL");
+    //   conn.write("Move: up");
+
+    //   setInterval(() => {
+    //     conn.write("Move: up");
+    //   }, 50)
+    });
+
+    
+
+   
 
 
+    return conn;
 
-  return conn;
-};
-  
+  };
+
+
 module.exports = {
   connect
 };
