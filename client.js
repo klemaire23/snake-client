@@ -7,11 +7,25 @@ const connect = function() {
     port: "50541",
   });
   
-  // Event Handler 1
+  
   conn.setEncoding("utf8");
-  const connectData = conn.on("data", (data) => {
+
+  // Event Handler 1
+  conn.on("data", (data) => {
     console.log("Server says:", data);
   });
+
+// Event Handler 2
+
+conn.on("connect", () => {
+  console.log("Successfully connected to game server");
+});
+
+conn.on("connect", () => {
+  conn.write("Name: KBL");
+});
+
+
 
   return conn;
 };
